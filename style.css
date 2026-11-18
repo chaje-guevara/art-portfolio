@@ -1,15 +1,30 @@
 
-/* GENERAL */
+/* =================================
+   CHAJE GUEVARA ART
+   Contemporary gallery aesthetic
+================================= */
+
+:root {
+  --wall: #C7D2AD;
+  --wall-dark: #B5C49A;
+  --olive: #343D2B;
+  --cream: #F4F0E5;
+  --overlay: rgba(39, 47, 32, 0.82);
+}
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  background-color: #c7d2ad;
-  color: #343d2b;
-  font-family: Georgia, serif;
+  background: var(--wall);
+  color: var(--olive);
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
 a {
@@ -20,90 +35,124 @@ a {
 /* HEADER */
 
 .site-header {
+  padding: 55px 25px 35px;
   text-align: center;
-  padding: 45px 20px 35px;
 }
 
 .site-header h1,
 .detail-header h1 {
-  font-size: clamp(27px, 4vw, 42px);
+  font-size: clamp(29px, 4vw, 48px);
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: -1.5px;
   margin: 0;
 }
 
 .site-header p {
-  font-size: 12px;
-  letter-spacing: 2px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  margin-top: 12px;
+  margin-top: 15px;
+  opacity: 0.75;
 }
 
 /* GALLERY WALL */
 
 .gallery {
-  padding: 25px 6% 80px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 45px 7% 110px;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 45px 35px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 65px 30px;
   align-items: center;
 }
+
+/* ORGANIC PLACEMENT */
 
 .artwork-card {
   position: relative;
   display: block;
   overflow: hidden;
-  background: #aebc94;
-  cursor: pointer;
+  background: var(--wall-dark);
+  grid-column: span 4;
+  isolation: isolate;
+}
+
+.artwork-card:nth-child(5n + 1) {
+  grid-column: 2 / span 4;
+}
+
+.artwork-card:nth-child(5n + 2) {
+  grid-column: 7 / span 4;
+  margin-top: 65px;
+}
+
+.artwork-card:nth-child(5n + 3) {
+  grid-column: 3 / span 4;
+}
+
+.artwork-card:nth-child(5n + 4) {
+  grid-column: 8 / span 4;
+  margin-top: 35px;
+}
+
+.artwork-card:nth-child(5n) {
+  grid-column: 5 / span 4;
+  margin-top: 20px;
 }
 
 .artwork-card img {
-  width: 100%;
-  height: 340px;
   display: block;
+  width: 100%;
+  height: 350px;
   object-fit: contain;
-  transition: transform 0.5s ease, opacity 0.4s ease;
+  transition: transform 0.7s ease;
 }
 
 .artwork-card.tall img {
-  height: 430px;
-}
-
-.artwork-card.wide {
-  grid-column: span 2;
+  height: 450px;
 }
 
 .artwork-card.wide img {
   height: 300px;
 }
 
-/* HOVER INFORMATION */
+/* HOVER OVERLAY */
 
 .artwork-info {
   position: absolute;
   inset: 0;
-  background: rgba(42, 51, 34, 0.72);
-  color: #f4f0e5;
+  z-index: 2;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   text-align: center;
-  padding: 20px;
+  padding: 25px;
+
+  background: var(--overlay);
+  color: var(--cream);
+
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.4s ease;
 }
 
 .artwork-info h2 {
-  font-size: 23px;
+  font-size: clamp(20px, 2vw, 28px);
   font-weight: 400;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .artwork-info p {
   font-family: Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  line-height: 1.8;
+  text-transform: uppercase;
 }
 
 .artwork-card:hover .artwork-info,
@@ -112,13 +161,18 @@ a {
 }
 
 .artwork-card:hover img {
-  transform: scale(1.03);
+  transform: scale(1.035);
 }
 
-/* INDIVIDUAL ARTWORK PAGE */
+.artwork-card:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 5px;
+}
+
+/* INDIVIDUAL ARTWORK */
 
 .detail-header {
-  padding: 30px 5%;
+  padding: 35px 6%;
   text-align: center;
 }
 
@@ -126,93 +180,132 @@ a {
   display: block;
   text-align: left;
   font-family: Arial, sans-serif;
-  font-size: 12px;
-  margin-bottom: 25px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+
+.back-link:hover {
+  opacity: 0.6;
 }
 
 .detail-page {
-  max-width: 900px;
-  margin: 20px auto 80px;
-  padding: 0 25px;
+  max-width: 1100px;
+  margin: 30px auto 100px;
+  padding: 0 30px;
 }
 
 .detail-image {
   display: block;
   width: 100%;
-  max-height: 75vh;
+  max-height: 78vh;
   object-fit: contain;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .detail-info {
-  max-width: 650px;
-  margin: 35px auto;
+  max-width: 600px;
+  margin: 55px auto;
   text-align: center;
 }
 
 .detail-info h2 {
-  font-size: 27px;
+  font-size: 32px;
   font-weight: 400;
+  margin-bottom: 18px;
 }
 
 .detail-meta {
   font-family: Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-size: 10px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  margin: 15px 0 25px;
+  margin-bottom: 30px;
 }
 
 .detail-info p:last-child {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 2;
 }
 
 /* FOOTER */
 
 footer {
   text-align: center;
-  padding: 25px;
+  padding: 30px 20px;
   font-family: Arial, sans-serif;
-  font-size: 10px;
-  letter-spacing: 1px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* MOBILE */
 
 @media (max-width: 700px) {
+  .site-header {
+    padding: 40px 15px 25px;
+  }
+
   .gallery {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px 5% 50px;
+    padding: 30px 5% 65px;
+    gap: 30px 16px;
+  }
+
+  .artwork-card,
+  .artwork-card:nth-child(n) {
+    grid-column: span 1;
+    margin-top: 0;
+  }
+
+  .artwork-card:nth-child(3n) {
+    grid-column: span 2;
+    width: 85%;
+    justify-self: center;
   }
 
   .artwork-card img,
-  .artwork-card.tall img {
-    height: 240px;
-  }
-
-  .artwork-card.wide {
-    grid-column: span 2;
-  }
-
+  .artwork-card.tall img,
   .artwork-card.wide img {
-    height: 220px;
+    height: 230px;
   }
 
+  /* Keep artwork details accessible on touch screens */
   .artwork-info {
-    opacity: 1;
     position: relative;
+    inset: auto;
+    opacity: 1;
     background: transparent;
-    color: #343d2b;
+    color: var(--olive);
     padding: 12px 5px;
   }
 
   .artwork-info h2 {
-    font-size: 16px;
+    font-size: 17px;
+    margin-bottom: 5px;
   }
 
   .artwork-info p {
     font-size: 9px;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+
+  .detail-page {
+    padding: 0 18px;
+  }
+
+  .detail-info {
+    margin-top: 35px;
+  }
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
   }
 }
