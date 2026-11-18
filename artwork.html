@@ -22,3 +22,39 @@
 
 </body>
 </html>
+
+// detail.js
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const art = artworks.find(item => item.id === id);
+const container = document.getElementById("artwork-detail");
+
+if (art) {
+  document.title = `${art.title} | chaje guevara art`;
+
+  const image = document.createElement("img");
+  image.src = art.image;
+  image.alt = art.title;
+  image.className = "detail-image";
+
+  const info = document.createElement("section");
+  info.className = "detail-info";
+
+  const title = document.createElement("h2");
+  title.textContent = art.title;
+
+  const meta = document.createElement("p");
+  meta.className = "detail-meta";
+  meta.textContent = `${art.medium} · ${art.dimensions}`;
+
+  const description = document.createElement("p");
+  description.textContent = art.description;
+
+  info.append(title, meta, description);
+  container.append(image, info);
+
+} else {
+  container.textContent = "Artwork not found.";
+}
