@@ -5,7 +5,7 @@ const artworks = [
     title: "Chopped Unc",
     medium: "oil pastel on paper",
     dimensions: "30 × 34 cm",
-    image: "images/artwork-1.jpg",
+    image: "03BB189F-D81A-4306-B237-A9A68D4FE6BA.jpeg",
     description: "Write the story behind this artwork here.",
   },
 
